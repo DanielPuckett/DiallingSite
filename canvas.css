@@ -1,0 +1,66 @@
+#blanket {
+background-color:#111;
+opacity: 0.65;
+filter:alpha(opacity=65);
+position:absolute;
+z-index: 9001;
+top:0px;
+left:0px;
+width:100%;
+}
+
+#popUpDiv {
+position:absolute;
+/* background-color:#eeeeee; */
+background-color:#FFFFFF;
+width:300px;
+height:100px;
+z-index: 9002;
+}
+
+.if_popup
+{
+border-style:solid;
+border-width:medium;
+border-color:#3366CC;
+}
+
+.if_inline
+{
+border-style:none;
+}
+
+.ajaxstatus
+{
+color: royalblue;
+text-align:right;
+font-size:12px;
+}
+
+
+hr
+{
+color:#3366CC;
+background-color:#3366CC;
+height:2px;
+border:none;
+}
+
+textarea
+{
+width:100%;
+border: 3px solid #3366CC;
+padding: 5px;
+}
+
+input[type="button_eer"]
+{
+border-right: #a9a9a9 2px solid;
+padding-right: 2px;
+border-top: #a9a9a9 2px solid;
+padding-left: 2px;
+padding-bottom: 2px;
+border-left: #a9a9a9 2px solid;
+padding-top: 2px;
+border-bottom: #a9a9a9 2px solid;
+}
