@@ -1,0 +1,59 @@
+USER=`ls -l ./|grep tmp\ -|awk '{print $3}'`
+
+www=www-data
+
+function stopStartRemoteRead() {
+  #arg1 any value, start process,  will always stop if running
+  #arg2 is SingleUsefile
+  #arg3 is remote host
+  #arg4 is capfile
+  x=`ps -U $www -f|grep $2|grep echo\ $USER|grep -v grep|awk '{print $2}'`
+  [ "x$x" !=  "x" ] && kill -9 $x && /bin/echo -n "Killing pid $x. "
+  #while [ "$x" == "`ps -U $www|grep $2|grep echo\ $USER|grep -v grep|awk '{print $1}'`" ]; do
+  #  sleep 1
+  #done
+  #/bin/echo -n "Killed pid $x. "
+  if [ $1 -ne 0 ]; then
+    ssh -t -t -n -i ../DiallingServer/Passwords/$2 $3 echo $USER > $4 &
+    /bin/echo -n "Started pid $!."
+  fi
+}
+
+function stopStartScript() {
+  #arg1 any value, start process,  will always stop if running
+  #arg2 is Script
+  x=`ps -U $www -f|grep "$2"|grep echo\ $USER|grep -v grep|awk '{print $2}'`
+  [ "x$x" !=  "x" ] && kill -9 $x && /bin/echo -n "Killing pid $x. "
+  #while [ "$x" == "`ps -U $www|grep "$2"|grep echo\ $USER|grep -v grep|awk '{print $1}'`" ]; do
+  #  sleep 1
+  #done
+  #/bin/echo -n "Killed pid $x. "
+  if [ $1 -ne 0 ]; then
+     sh ../DiallingServer/$2 echo $USER &
+     /bin/echo -n "Started pid $!."
+  fi
+}
+
+function processcontrol() {
+  OP=1
+  [ "x$A" == "xSTOP" ] && OP=0
+  [ "x$A" == "xSTART" ] && OP=1
+  case $P in
+    DIALLINGSERVER)   stopStartScript $OP "DiallingServer.sh";;
+    PHONE1)          stopStartScript $OP "runVSSP.sh 1 tor.dts.tprm.ca dist_9101 ../DiallingServer/Passwords/pass_0006_dist_9101 1 2";;
+    PHONE2)          stopStartScript $OP "runVSSP.sh 2 tor.dts.tprm.ca dist_9101 ../DiallingServer/Passwords/pass_0006_dist_9101 1 2";;
+    PHONE3)          stopStartScript $OP "runVSSP.sh 3 tor.dts.tprm.ca dist_9102 ../DiallingServer/Passwords/pass_0007_dist_9102 1 2";;
+    PHONE4)          stopStartScript $OP "runVSSP.sh 4 tor.dts.tprm.ca dist_9102 ../DiallingServer/Passwords/pass_0007_dist_9102 1 2";;
+    PHONE5)          stopStartScript $OP "runVSSP.sh 5 tor.dts.tprm.ca dist_9103 ../DiallingServer/Passwords/pass_0008_dist_9103 1 2";;
+    PHONE6)          stopStartScript $OP "runVSSP.sh 6 tor.dts.tprm.ca dist_9103 ../DiallingServer/Passwords/pass_0008_dist_9103 1 2";;
+    CRAFTRECORDS)    stopStartRemoteRead $OP xrecords\@mtlxfb01.corp.distributel.ca.Get_craft.all          xrecords@mtlxfb01.corp.distributel.ca ./tmp/did.CRAFTS ;;
+    # CRAFTRECORDSOUT) stopStartRemoteRead $OP xrecords\@mtlxfb01.corp.distributel.ca.Get_craft.outbound     xrecords@mtlxfb01.corp.distributel.ca ./tmp/did.OUTCRAFT ;;
+    # CRAFTRECORDSIN)  stopStartRemoteRead $OP xrecords\@mtlxfb01.corp.distributel.ca.Get_craft.inbound      xrecords@mtlxfb01.corp.distributel.ca ./tmp/did.INCRAFT ;;
+    # CSDRRECORDSIN)   stopStartRemoteRead $OP xrecords\@mtlxfb01.corp.distributel.ca.Get_csdr.inbound       xrecords@mtlxfb01.corp.distributel.ca ./tmp/did.INCSDR ;;
+    # ASX_TORONTO)     stopStartRemoteRead $OP xrecords\@mtlxfb01.corp.distributel.ca.GetAsteriskToronto    xrecords@mtlxfb01.corp.distributel.ca ./tmp/did.AST ;;
+    # ASX_THUNDERBAY)  stopStartRemoteRead $OP xrecords\@mtlxfb01.corp.distributel.ca.GetAsteriskThunderBay xrecords@mtlxfb01.corp.distributel.ca ./tmp/did.ASB ;;
+    # ASX_VANCOUVER)   stopStartRemoteRead $OP xrecords\@mtlxfb01.corp.distributel.ca.GetAsteriskVancouver  xrecords@mtlxfb01.corp.distributel.ca ./tmp/did.ASV ;;
+    *) /bin/echo "Unknown instructions $P"
+  esac
+}
+
