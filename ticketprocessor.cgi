@@ -100,7 +100,7 @@ if [ "x$DIDEXPORTLIST" != "x" ]; then
         # DiallingServer & xfileread writes the call start time and the DID in the log file
         # HangupTime = Call starttime from log + 11 seconds call duration (set in xfileread.bash)
         hanguptime=`echo "$line"|colrm 20`
-        hanguptime=`date -jf '%Y-%m-%d %H:%M:%S' "$hanguptime" +%s`
+        hanguptime=`date -d "$hanguptime" +%s`
         let hanguptime=( $hanguptime + 11  )
         # ExpectedRecordDelay=Some calibrated time value
         expectedRecordDelay=5
@@ -130,6 +130,7 @@ if [ "x$DIDEXPORTLIST" != "x" ]; then
         tm_count=0
 
         tt_err="---"
+        error=""
 
 linefeed="
 "
