@@ -103,7 +103,7 @@ Content-type: text/xml
 <processcontrol div="ctrl" enc="html"><![CDATA[$processcontrolresult]]></processcontrol>
 <hostinfo       div="host" enc="html"><![CDATA[Current time `uptime`]]></hostinfo>
 `makeSectionDetail  1 2 "Dialling Server" "DiallingServer.sh" ./tmp/did.ticket DIALLINGSERVER`
-`makeSectionDetail  8 1 "MetaSwitches" Get_craft.all ./tmp/did.CRAFTS CRAFTRECORDS`
+`makeSectionDetail  8 1 "MetaSwitches" idrsa ./tmp/did.CRAFTS CRAFTRECORDS`
 `makeSectionDetail  2 0 "SIP Phone 1" "runVSSP.sh\ [1]" ./tmp/sip.out.1 PHONE1`
 `makeSectionDetail  3 0 "SIP Phone 2" "runVSSP.sh\ [2]" ./tmp/sip.out.2 PHONE2`
 `makeSectionDetail  4 0 "SIP Phone 3" "runVSSP.sh\ [3]" ./tmp/sip.out.3 PHONE3`
