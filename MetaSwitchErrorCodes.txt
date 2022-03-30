@@ -1,0 +1,70 @@
+001 Unallocated (unassigned) number
+002 No route to specified transit network (national use)
+003 No route to destination
+004 Send special information tone
+005 Misdialed trunk prefix (national use)
+006 Channel unacceptable
+007 Call awarded, being delivered in an established channel
+008 Pre-emption
+009 Pre-emption - circuit reserved for reuse
+016 Normal call clearing
+017 User busy
+018 No user responding
+019 No answer from user (user alerted)
+020 Subscriber absent
+021 Call rejected
+022 Number changed
+026 Non-selected user clearing
+027 Destination out of order
+028  Invalid number format (address incomplete)
+029 Facilities rejected
+030 Response to STATUS INQUIRY
+031 Normal, unspecified
+034 No circuit / channel available
+035 Call Queued
+038 Network out of order
+039 Permanent frame mode connection out-of-service
+040 Permanent frame mode connection operational
+041 Temporary failure
+042 Switching equipment congestion
+043 Access information discarded
+044 Requested circuit / channel not available
+046 Precedence call blocked
+047 Resource unavailable, unspecified
+049 Quality of Service not available
+050 Requested facility not subscribed
+052 Outgoing calls barred
+053 Outgoing calls barred within CUG
+054 Incoming calls barred
+055 Incoming calls barred within CUG
+057 Bearer capability not authorized
+058 Bearer capability not presently available
+062 Inconsistency in outgoing information element
+063 Service or option not available, unspecified
+065 Bearer capability not implemented
+066 Channel type not implemented
+069 Requested facility not implemented
+070 Only restricted digital information bearer capability is available (national use)
+079 Service or option not implemented, unspecified
+081 Invalid call reference value
+082 Identified channel does not exist
+083 One or more suspended calls exists, but the call identity you are trying to resume does not exist
+084 Call identity in use
+085 No call suspended
+086 Call having the requested call identity has been cleared
+087 User not a member of CUG
+088 Incompatible destination
+090 Non-existent CUG
+091 Invalid transit network selection (national use)
+095 Invalid message, unspecified
+096 Mandatory information element is missing
+097 Message type non-existent or not implemented
+098 Message not compatible with call state or message type non-existent or not implemented
+099 Information element / parameter non-existent or not implemented
+100 Invalid information element contents
+101 Message not compatible with call state
+102 Recovery on timer expiry
+103 Parameter non-existent or not implemented - passed on (national use)
+110 Message with unrecognized parameter discarded
+111 Protocol error, unspecified
+127 Interworking, unspecified
