@@ -1,0 +1,7 @@
+# Logger
+clientdir="./tmp/userlogs/ip_${REMOTE_ADDR}"
+page=page_`echo "${SCRIPT_FILENAME}"|sed s/.*\\\\///g`
+contents="[[`date` ::${A} ${P}${DIDEXPORTLIST}${QUERY_STRING}]]"
+#mkdir "$clientdir"
+#echo "$contents" >> $clientdir/$page 
+# /Logger
