@@ -72,18 +72,16 @@ function makeSectionDetail() {
   #local xx="`makeButton Start START $6`"
   local xx=""
   local pid=`getPID "$4"`
-  
+
 if [ "x$1" == "x1" ]; then
   xx="`makeButton Start START $6`"
 else
   xx="Auto-Starts"
 fi
 
-
 count=$(cat $5|wc -l)
 count=$(( $count - 1 ))
 
-  
   if [ "x$pid" != "x" ]; then
     case $2 in
       0) zz="`grep -E "state=CALLING" $5|wc -l` test calls";;
