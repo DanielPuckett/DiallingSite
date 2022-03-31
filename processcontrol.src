@@ -14,7 +14,7 @@ function stopStartRemoteRead() {
   #done
   #/bin/echo -n "Killed pid $x. "
   if [ $1 -ne 0 ]; then
-    ssh -o StrictHostKeyChecking=no -t -t -n -i /opt/DiallingServer/Passwords/$2 $3 echo $USER > $4 &
+    ssh -o StrictHostKeyChecking=no -t -t -n -i /var/www/.ssh/$2 $3 echo $USER > $4 &
     /bin/echo -n "Started pid $!."
   fi
 }
@@ -40,12 +40,12 @@ function processcontrol() {
   [ "x$A" == "xSTART" ] && OP=1
   case $P in
     DIALLINGSERVER)   stopStartScript $OP "DiallingServer.sh";;
-    PHONE1)          stopStartScript $OP "runVSSP.sh 1 tor.dts.tprm.ca dist_9104 /opt/DiallingServer/Passwords/pass_0009_dist_9104 1 2";;
-    PHONE2)          stopStartScript $OP "runVSSP.sh 2 tor.dts.tprm.ca dist_9104 /opt/DiallingServer/Passwords/pass_0009_dist_9104 1 2";;
-    PHONE3)          stopStartScript $OP "runVSSP.sh 3 tor.dts.tprm.ca dist_9105 /opt/DiallingServer/Passwords/pass_0010_dist_9105 1 2";;
-    PHONE4)          stopStartScript $OP "runVSSP.sh 4 tor.dts.tprm.ca dist_9105 /opt/DiallingServer/Passwords/pass_0010_dist_9105 1 2";;
-    PHONE5)          stopStartScript $OP "runVSSP.sh 5 tor.dts.tprm.ca dist_9106 /opt/DiallingServer/Passwords/pass_0011_dist_9106 1 2";;
-    PHONE6)          stopStartScript $OP "runVSSP.sh 6 tor.dts.tprm.ca dist_9106 /opt/DiallingServer/Passwords/pass_0011_dist_9106 1 2";;
+    PHONE1)          stopStartScript $OP "runVSSP.sh 1 tor.dts.tprm.ca dist_9104 /var/www/.sip/pass_0009_dist_9104 1 2";;
+    PHONE2)          stopStartScript $OP "runVSSP.sh 2 tor.dts.tprm.ca dist_9104 /var/www/.sip/pass_0009_dist_9104 1 2";;
+    PHONE3)          stopStartScript $OP "runVSSP.sh 3 tor.dts.tprm.ca dist_9105 /var/www/.sip/pass_0010_dist_9105 1 2";;
+    PHONE4)          stopStartScript $OP "runVSSP.sh 4 tor.dts.tprm.ca dist_9105 /var/www/.sip/pass_0010_dist_9105 1 2";;
+    PHONE5)          stopStartScript $OP "runVSSP.sh 5 tor.dts.tprm.ca dist_9106 /var/www/.sip/pass_0011_dist_9106 1 2";;
+    PHONE6)          stopStartScript $OP "runVSSP.sh 6 tor.dts.tprm.ca dist_9106 /var/www/.sip/pass_0011_dist_9106 1 2";;
     CRAFTRECORDS)    stopStartRemoteRead $OP idrsa  xrecords@10.71.50.11 ./tmp/did.CRAFTS ;;
     *) /bin/echo "Unknown instructions $P"
   esac
