@@ -69,17 +69,37 @@ function makeSectionDetail() {
   # ---------------------------------
   local zz=""
   local yy=""
-  local xx="`makeButton Start START $6`"
+  #local xx="`makeButton Start START $6`"
+  local xx=""
   local pid=`getPID "$4"`
+  
+if [ "x$1" == "x1" ]; then
+  xx="`makeButton Start START $6`"
+else
+  xx="Auto-Starts"
+fi
+
+
+count=$(cat $5|wc -l)
+count=$(( $count - 1 ))
+
+  
   if [ "x$pid" != "x" ]; then
     case $2 in
       0) zz="`grep -E "state=CALLING" $5|wc -l` test calls";;
       1) zz="`ls -ltr $5|awk '{print $6" "$7" "$8}'`";;
-      2) zz="`[ ! -s $5.working ] && /bin/echo "Idle"``[ -s $5.working ] && /bin/echo "Processing " && cat $5|wc -l && /bin/echo " DIDs"`";;
+      2) zz="`[ ! -s $5.working ] && /bin/echo "Idle"``[ -s $5.working ] && /bin/echo "Processing $count DIDs"`";;
       *) zz="unknown method";;
     esac
+
+if [ "x$1" == "x1" ]; then
     xx="`makeButton Restart START $6`"
     yy="`makeButton Stop STOP $6`"
+else
+    xx="Auto-Starts"
+    yy=""
+fi
+
   fi
   [ "x$zz" == "x" ] && zz="&nbsp;";
   [ "x$yy" == "x" ] && yy="&nbsp;";
