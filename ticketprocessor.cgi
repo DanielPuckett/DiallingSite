@@ -22,6 +22,10 @@ LF="
 "
 DIDEXPORTLIST=""
 
+# Bug..  cr is not being treated as white space
+DIDLISTO=$DIDLIST
+DIDLIST=$(echo "$DIDLISTO"|tr '\r' ' ')
+
 for i in $DIDLIST; do
   # clean out anything not number or T then change T to PIPE
   CLEANDID=`/bin/echo $i | /usr/bin/tr -cd "T0123456789" | /usr/bin/tr 'T' '|'`
