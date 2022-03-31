@@ -26,7 +26,7 @@ cat << EOF
   </div></td>
   <td colspan="3" align="right">
     <INPUT name="autobutton" type="BUTTON" value="Auto-Refresh"
-     onClick="javascript: if(document.statusform.autobutton.value=='Auto-Refresh') {autoTimer(0,'set',30,'./systemstatus.xml.cgi', 'ajaxstatus',''); document.statusform.autobutton.value='Stop-Refresh';}else{autoTimer(0,'stop',0,'./systemstatus.xml.cgi', 'ajaxstatus',''); document.statusform.autobutton.value='Auto-Refresh';};">
+     onClick="javascript: if(document.statusform.autobutton.value=='Auto-Refresh') {autoTimer(0,'set',5,'./systemstatus.xml.cgi', 'ajaxstatus',''); document.statusform.autobutton.value='Stop-Refresh';}else{autoTimer(0,'stop',0,'./systemstatus.xml.cgi', 'ajaxstatus',''); document.statusform.autobutton.value='Auto-Refresh';};">
   </td>
 </tr>
 <tr>
