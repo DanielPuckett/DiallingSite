@@ -39,21 +39,10 @@ cat << EOF
 <b>Your Ticket</b>
 <br /><br />
 <form action="./ticketprocessor.cgi" method="post" target="ticketprocessor" name="ticketform">
-<input type="checkbox" name="optionVD"  value="VD"  checked /> Show VoIP dial out records <br />
-<!-- 
-<input type="checkbox" name="optionDT"  value="DT"  checked /> Show Genband records <br />
--->
-<input type="checkbox" name="optionTT"  value="TT"  checked /> Show Metaswitch records <br />
-
-<!--
-<input type="checkbox" name="optionASM" value="ASM" checked /> Show 3Web Montreal Asterisk records <br />
-<input type="checkbox" name="optionAST" value="AST" checked /> Show 3Web Toronto Asterisk records <br />
-<input type="checkbox" name="optionASB" value="ASB" checked /> Show 3Web ThunderBay Asterisk records <br />
-<input type="checkbox" name="optionASV" value="ASV" checked /> Show 3Web Vancouver Asterisk records <br /><br />
--->
-
-<input type="checkbox" name="optionRECS" value="true" checked /> Only show matched records<br />
-<input type="checkbox" name="optionMR2" value="true" checked /> Show version 2 machine readable summary records<br />
+<input type="checkbox" name="optionVD"  value="VD"  checked  /> Show DialOut records <br />
+<input type="checkbox" name="optionTT"  value="TT"  checked  /> Show Routing &amp; Termination records <br />
+<input type="checkbox" name="optionMR2" value="true" checked /> Show Version 2 machine readable summary records<br />
+<input type="checkbox" name="optionTCP" value="true"         /> Force SIP INVITES through TCP<br />
 <br />
 Enter your list of 100 or less DIDs<br />
 Enter as NPANXXXXXX each on its own line or space separated, you may add additional trace DIDs separate by a T, but no spaces. Eg. 4168011462<b>T</b>4162209911<br />
