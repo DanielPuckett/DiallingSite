@@ -158,7 +158,7 @@ linefeed="
         #Routing
         if [ $TT -eq 1 ]; then
           tt_count=0
-          ALLLINES=`/usr/bin/grep -a -E "${thisDID}" ./tmp/did.CRAFTS|grep -vE "7766|\ 9998|TER"`
+          ALLLINES=`/usr/bin/grep -a -E "${thisDID}" ./tmp/did.CRAFTS|grep -vE "7766|\ 9998|TER|INT"`
           oIFS=$IFS
           IFS=$linefeed
           for line in $ALLLINES; do
@@ -182,7 +182,7 @@ linefeed="
         #TERM
         if [ $TT -eq 1 ]; then
           tm_count=0
-          ALLLINES=`/usr/bin/grep -a -E "${thisDID}" ./tmp/did.CRAFTS| grep -E "\ TER" | grep -vE "7766|\ 9998"`
+          ALLLINES=`/usr/bin/grep -a -E "${thisDID}" ./tmp/did.CRAFTS| grep -E "\ TER|\ INT" | grep -vE "7766|\ 9998"`
           oIFS=$IFS
           IFS=$linefeed
           for line in $ALLLINES; do
