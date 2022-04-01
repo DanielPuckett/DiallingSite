@@ -68,6 +68,9 @@ if [ "x$DIDEXPORTLIST" != "x" ]; then
     # wait two seconds.  Hmmm.. to fix now or not..
     sleep 2
 
+    # Create ticket settings
+    /bin/echo "TCP=$optionTCP" > ./tmp/did.ticket.settings
+
     # Create ticket
     # And clear the call record file(s) of all previous ticket results
     /bin/echo "$DIDEXPORTLIST"  > ./tmp/did.ticket
@@ -124,9 +127,6 @@ if [ "x$DIDEXPORTLIST" != "x" ]; then
 
         VD=0; [ "x$optionVD" == "xVD" ] && VD=1
         TT=0; [ "x$optionTT" == "xTT" ] && TT=1
-
-        RECSONLY=0; [ "x$optionRECS" == "xtrue" ] && RECSONLY=1
-
         MR2=0; [ "x$optionMR2" == "xtrue" ] && MR2=1 && MRrecord2=$thisDID
 
         vd_count=0
@@ -150,9 +150,6 @@ linefeed="
             /bin/echo "&nbsp;&nbsp;&nbsp;<b>DialOut</b> $line<br />"
           done
           IFS=$oIFS
-          if [ $vd_count -eq 0 ]; then
-            [ $RECSONLY -eq 0 ] && /bin/echo "&nbsp;&nbsp;&nbsp;$thisDID might not have been successfully dialed out<br />"
-          fi
         fi
 
         #Routing
@@ -170,13 +167,11 @@ linefeed="
               error="<b>Error: $tt_err `grep -E "^$tt_err\ " MetaSwitchErrorCodes.txt|colrm 1 4`</b>"
               /bin/echo "&nbsp;&nbsp;&nbsp;<b>Routing</b> $line ${error}<br />"
             else
+              error=""
               /bin/echo "&nbsp;&nbsp;&nbsp;<b>Routing</b> $line<br />"
             fi
           done
           IFS=$oIFS
-          if [ $tt_count -eq 0 ]; then
-            [ $RECSONLY -eq 0 ] && /bin/echo "&nbsp;&nbsp;&nbsp;$thisDID might not have been successfully routed through a Metaswitch<br />"
-          fi
         fi
 
         #TERM
@@ -196,13 +191,11 @@ linefeed="
               [ "$tt_err" != "027" ] && error="<b>Error: $tt_err `grep -E "^$tt_err\ " MetaSwitchErrorCodes.txt|colrm 1 4`</b>"
               /bin/echo "&nbsp;&nbsp;&nbsp;<b>Termination</b> $line ${error}<br />"
             else
+              error=""
               /bin/echo "&nbsp;&nbsp;&nbsp;<b>Termination</b> $line<br />"
             fi
           done
           IFS=$oIFS
-          if [ $tm_count -eq 0 ]; then
-            [ $RECSONLY -eq 0 ] && /bin/echo "&nbsp;&nbsp;&nbsp;$thisDID might not have been successfully terminated on a Metaswitch<br />"
-          fi
         fi
 
         # MRR
