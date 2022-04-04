@@ -59,7 +59,7 @@ When Auto refresh is enabled, this page is called every few seconds.
 
 <li>processcontrol.cgi --cgi shell script that will fullfill the {Restart} of process requests 
 from the systemstatus page or from the Dialling Server when it is processing tickets. Starts and 
-Stops Dialling Server, softphones (runVSSP.sh), and record logger connections to MtlXfB01 (xrecords
+Stops Dialling Server, softphones (runVSSP.bash), and record logger connections to MtlXfB01 (xrecords
 repository).
 <br /><br /></li>
 
