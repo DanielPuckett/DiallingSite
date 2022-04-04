@@ -120,21 +120,13 @@ Content-type: text/xml
 <statusrows>
 <processcontrol div="ctrl" enc="html"><![CDATA[$processcontrolresult]]></processcontrol>
 <hostinfo       div="host" enc="html"><![CDATA[Current time `uptime`]]></hostinfo>
-`makeSectionDetail  1 2 "Dialling Server" "DiallingServer.sh" ./tmp/did.ticket DIALLINGSERVER`
+`makeSectionDetail  1 2 "Dialling Server" "DiallingServer.bash" ./tmp/did.ticket DIALLINGSERVER`
 `makeSectionDetail  8 1 "MetaSwitches" idrsa ./tmp/did.CRAFTS CRAFTRECORDS`
-`makeSectionDetail  2 0 "SIP Phone 1" "runVSSP.sh\ [1]" ./tmp/sip.out.1 PHONE1`
-`makeSectionDetail  3 0 "SIP Phone 2" "runVSSP.sh\ [2]" ./tmp/sip.out.2 PHONE2`
-`makeSectionDetail  4 0 "SIP Phone 3" "runVSSP.sh\ [3]" ./tmp/sip.out.3 PHONE3`
-`makeSectionDetail  5 0 "SIP Phone 4" "runVSSP.sh\ [4]" ./tmp/sip.out.4 PHONE4`
-`makeSectionDetail  6 0 "SIP Phone 5" "runVSSP.sh\ [5]" ./tmp/sip.out.5 PHONE5`
-`makeSectionDetail  7 0 "SIP Phone 6" "runVSSP.sh\ [6]" ./tmp/sip.out.6 PHONE6`
+`makeSectionDetail  2 0 "SIP Phone 1" "runVSSP.bash\ [1]" ./tmp/sip.out.1 PHONE1`
+`makeSectionDetail  3 0 "SIP Phone 2" "runVSSP.bash\ [2]" ./tmp/sip.out.2 PHONE2`
+`makeSectionDetail  4 0 "SIP Phone 3" "runVSSP.bash\ [3]" ./tmp/sip.out.3 PHONE3`
+`makeSectionDetail  5 0 "SIP Phone 4" "runVSSP.bash\ [4]" ./tmp/sip.out.4 PHONE4`
+`makeSectionDetail  6 0 "SIP Phone 5" "runVSSP.bash\ [5]" ./tmp/sip.out.5 PHONE5`
+`makeSectionDetail  7 0 "SIP Phone 6" "runVSSP.bash\ [6]" ./tmp/sip.out.6 PHONE6`
 </statusrows>
 EOF
-
-#`makeSectionDetail 10 1 "Genband" Get_csdr.inbound ./tmp/did.INCSDR CSDRRECORDSIN`
-#`makeSectionDetail  9 1 "MetaSwitches" Get_craft.inbound ./tmp/did.INCRAFT CRAFTRECORDSIN`
-# `makeSectionDetail 10 1 "Montreal Astx" GetAsteriskMontreal ./tmp/did.ASM ASX_MONTREAL`
-# `makeSectionDetail 11 1 "Toronto Astx" GetAsteriskToronto ./tmp/did.AST ASX_TORONTO`
-# `makeSectionDetail 12 1 "ThunderBay Astx" GetAsteriskThunderBay ./tmp/did.ASB ASX_THUNDERBAY`
-# `makeSectionDetail 13 1 "Vancouver Astx" GetAsteriskVancouver ./tmp/did.ASV ASX_VANCOUVER`
-
