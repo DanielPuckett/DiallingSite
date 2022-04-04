@@ -35,17 +35,18 @@ function stopStartScript() {
 }
 
 function processcontrol() {
+  # Call by either the control buttons (if present) on the website or by the DiallingServer process.
   OP=1
   [ "x$A" == "xSTOP" ] && OP=0
   [ "x$A" == "xSTART" ] && OP=1
   case $P in
-    DIALLINGSERVER)   stopStartScript $OP "DiallingServer.sh";;
-    PHONE1)          stopStartScript $OP "runVSSP.sh 1 tor.dts.tprm.ca dist_9104 /var/www/.sip/pass_0009_dist_9104 1 2";;
-    PHONE2)          stopStartScript $OP "runVSSP.sh 2 tor.dts.tprm.ca dist_9104 /var/www/.sip/pass_0009_dist_9104 1 2";;
-    PHONE3)          stopStartScript $OP "runVSSP.sh 3 tor.dts.tprm.ca dist_9105 /var/www/.sip/pass_0010_dist_9105 1 2";;
-    PHONE4)          stopStartScript $OP "runVSSP.sh 4 tor.dts.tprm.ca dist_9105 /var/www/.sip/pass_0010_dist_9105 1 2";;
-    PHONE5)          stopStartScript $OP "runVSSP.sh 5 tor.dts.tprm.ca dist_9106 /var/www/.sip/pass_0011_dist_9106 1 2";;
-    PHONE6)          stopStartScript $OP "runVSSP.sh 6 tor.dts.tprm.ca dist_9106 /var/www/.sip/pass_0011_dist_9106 1 2";;
+    DIALLINGSERVER)   stopStartScript $OP "DiallingServer.bash";;
+    PHONE1)          stopStartScript $OP "runVSSP.bash 1 tor.dts.tprm.ca dist_9104 /var/www/.sip/pass_0009_dist_9104 1 2";;
+    PHONE2)          stopStartScript $OP "runVSSP.bash 2 tor.dts.tprm.ca dist_9104 /var/www/.sip/pass_0009_dist_9104 1 2";;
+    PHONE3)          stopStartScript $OP "runVSSP.bash 3 tor.dts.tprm.ca dist_9105 /var/www/.sip/pass_0010_dist_9105 1 2";;
+    PHONE4)          stopStartScript $OP "runVSSP.bash 4 tor.dts.tprm.ca dist_9105 /var/www/.sip/pass_0010_dist_9105 1 2";;
+    PHONE5)          stopStartScript $OP "runVSSP.bash 5 tor.dts.tprm.ca dist_9106 /var/www/.sip/pass_0011_dist_9106 1 2";;
+    PHONE6)          stopStartScript $OP "runVSSP.bash 6 tor.dts.tprm.ca dist_9106 /var/www/.sip/pass_0011_dist_9106 1 2";;
     CRAFTRECORDS)    stopStartRemoteRead $OP idrsa  xrecords@10.71.50.11 ./tmp/did.CRAFTS ;;
     *) /bin/echo "Unknown instructions $P"
   esac
