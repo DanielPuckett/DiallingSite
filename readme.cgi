@@ -68,7 +68,7 @@ Dialling Server, and searches through local call record logs that are created by
 scripts (described below) for call results as specified by your selections in your ticket.<br />
 <br /></li>
 
-<li>DiallingServer.sh and xfileread.bash --Shell scripts that wait until a work file of DIDs is 
+<li>DiallingServer.bash and xfileread.bash --Shell scripts that wait until a work file of DIDs is 
 created, then DiallingServer spawns instances of soft phones and record logger(s) required to process
 the ticket, and spawns an instance of xfileread.bash to process the ticket, distributing the calls 
 across the soft phones.  Once all DIDs have been dialled and the results acquired, the soft phones
